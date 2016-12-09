@@ -1,10 +1,7 @@
 package com.websystique.springmvc.controller;
 
-import java.util.List;
-import java.util.Locale;
-
-import javax.validation.Valid;
-
+import com.websystique.springmvc.model.Employee;
+import com.websystique.springmvc.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -15,8 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.websystique.springmvc.model.Employee;
-import com.websystique.springmvc.service.EmployeeService;
+import javax.validation.Valid;
+import java.util.List;
+import java.util.Locale;
 
 @Controller
 @RequestMapping("/")
@@ -30,6 +28,7 @@ public class AppController {
 
     /*
      * This method will list all existing employees.
+     * 这种方法将列出所有现有的员工。
      */
     @RequestMapping(value = { "/", "/list" }, method = RequestMethod.GET)
     public String listEmployees(ModelMap model) {
@@ -41,6 +40,7 @@ public class AppController {
 
     /*
      * This method will provide the medium to add a new employee.
+     * 这种方法将提供媒体添加一个新的员工。
      */
     @RequestMapping(value = { "/new" }, method = RequestMethod.GET)
     public String newEmployee(ModelMap model) {
@@ -53,6 +53,7 @@ public class AppController {
     /*
      * This method will be called on form submission, handling POST request for
      * saving employee in database. It also validates the user input
+     * 此方法将被称为表单提交，处理保存在数据库中的员工的岗位要求。它也验证了用户输入
      */
     @RequestMapping(value = { "/new" }, method = RequestMethod.POST)
     public String saveEmployee(@Valid Employee employee, BindingResult result,
